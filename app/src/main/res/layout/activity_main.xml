@@ -7,7 +7,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="examplewtest.midopc.puzzlegame.MainActivity">
+    tools:context="examplewtest.midopc.puzzlegame.MainActivity"
+    android:background="@drawable/bg">
 
 
     <LinearLayout
@@ -25,26 +26,50 @@
             android:id="@+id/textView"
             android:layout_weight="1"
             android:gravity="center"
-            android:padding="5dp" />
+            android:padding="5dp"
+            android:textStyle="bold"
+            android:textColor="#000000" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="0"
-            android:id="@+id/textView2"
+            android:id="@+id/score"
             android:layout_weight="1"
             android:gravity="center"
-            android:padding="5dp" />
+            android:padding="5dp"
+            android:textSize="15dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Time : "
+            android:id="@+id/textView2"
+            android:textColor="#000000"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:id="@+id/timer"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textSize="15dp" />
+
     </LinearLayout>
 
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
+        android:paddingTop="10dp"
         android:layout_below="@+id/linearLayout"
-        android:paddingTop="5dp">
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="44dp">
         <TableRow android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1">
@@ -54,20 +79,20 @@
                 android:layout_height="100dp"
                 android:id="@+id/b1"
                 android:layout_weight="1"
-                android:padding="5dp" />
+                android:padding="8dp" />
 
             <ImageView
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:id="@+id/b2"
                 android:layout_weight="1"
-                android:padding="5dp" />
+                android:padding="8dp" />
 
             <ImageView
                 android:layout_weight="1"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:padding="5dp"
+                android:padding="8dp"
                 android:id="@+id/b3" />
 
 
@@ -82,21 +107,21 @@
                 android:layout_height="100dp"
                 android:layout_weight="1"
                 android:id="@+id/b4"
-                android:padding="5dp" />
+                android:padding="8dp" />
 
             <ImageView
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:id="@+id/b5"
                 android:layout_weight="1"
-                android:padding="5dp" />
+                android:padding="8dp" />
 
             <ImageView
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:id="@+id/b6"
                 android:layout_weight="1"
-                android:padding="5dp" />
+                android:padding="8dp" />
         </TableRow>
 
         <TableRow android:layout_width="match_parent"
@@ -108,20 +133,20 @@
                 android:layout_height="100dp"
                 android:id="@+id/b7"
                 android:layout_weight="1"
-                android:padding="5dp" />
+                android:padding="8dp" />
 
             <ImageView
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:id="@+id/b8"
                 android:layout_weight="1"
-                android:padding="5dp" />
+                android:padding="8dp" />
 
             <ImageView
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_weight="1"
-                android:padding="5dp"
+                android:padding="8dp"
                 android:id="@+id/b9" />
 
 
