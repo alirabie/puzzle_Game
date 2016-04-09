@@ -8,7 +8,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="examplewtest.midopc.puzzlegame.MainActivity"
-    android:background="@drawable/bg">
+    android:background="@drawable/background">
 
 
     <LinearLayout
@@ -16,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/linearLayout"
-        android:background="#ffb726">
+        android:background="#92ffffff">
 
         <TextView
             android:layout_width="match_parent"
@@ -38,7 +38,8 @@
             android:layout_weight="1"
             android:gravity="center"
             android:padding="5dp"
-            android:textSize="15dp" />
+            android:textSize="15dp"
+            android:textColor="#ff0000" />
 
         <TextView
             android:layout_width="match_parent"
@@ -58,7 +59,8 @@
             android:id="@+id/timer"
             android:layout_weight="1"
             android:gravity="center"
-            android:textSize="15dp" />
+            android:textSize="15dp"
+            android:textColor="#ff0000" />
 
     </LinearLayout>
 

@@ -13,6 +13,8 @@ package examplewtest.midopc.puzzlegame;
         import android.os.Bundle;
         import android.util.Log;
         import android.view.View;
+        import android.view.Window;
+        import android.view.WindowManager;
         import android.widget.Button;
         import android.widget.ImageView;
         import android.widget.TextView;
@@ -59,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
         score1 = (TextView) findViewById(R.id.score);
         timer=(TextView)findViewById(R.id.timer);
@@ -138,11 +141,11 @@ public class MainActivity extends AppCompatActivity {
                 //AlertDialog for Close or Open new Game
              new AlertDialog.Builder(MainActivity.this)
                      .setTitle("Game over")
-                     .setMessage("Time Out")
+                     .setMessage("Time Out").setIcon(R.drawable.err)
                      .setPositiveButton("Try again ", new DialogInterface.OnClickListener() {
                          @Override
                          public void onClick(DialogInterface dialog, int which) {
-                             score=0;
+                             score = 0;
                              finish();
                              getIntent().setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                              startActivity(getIntent());
@@ -190,10 +193,10 @@ public class MainActivity extends AppCompatActivity {
 
                 if(score==4){
 
-                    new AlertDialog.Builder(MainActivity.this).setTitle("Congratulations").setMessage("Good Job").setPositiveButton("New Game", new DialogInterface.OnClickListener() {
+                    new AlertDialog.Builder(MainActivity.this).setTitle("Congratulations").setMessage("Good Job").setIcon(R.drawable.good).setPositiveButton("New Game", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            score=0;
+                            score = 0;
                             finish();
                             startActivity(getIntent());
 
