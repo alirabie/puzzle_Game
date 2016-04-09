@@ -2,6 +2,7 @@ package examplewtest.midopc.puzzlegame;
 
         import android.app.AlertDialog;
         import android.content.DialogInterface;
+        import android.content.Intent;
         import android.graphics.Bitmap;
         import android.graphics.drawable.BitmapDrawable;
         import android.graphics.drawable.Drawable;
@@ -27,7 +28,6 @@ package examplewtest.midopc.puzzlegame;
 public class MainActivity extends AppCompatActivity {
 
     public static int score = 0;
-    public static int CLICKS = 0;
     final int CLOSEIMG = R.drawable.close;
     public static TextView score1;
     public static TextView timer;
@@ -62,12 +62,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         score1 = (TextView) findViewById(R.id.score);
         timer=(TextView)findViewById(R.id.timer);
+        getIntent().setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
 
-
+        //Game Music
         MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.music);
         mediaPlayer.start();
 
-
+        //Random Numbers List
         ArrayList<Integer> nums = new ArrayList<Integer>();
 
         nums.add(0);
@@ -79,9 +80,8 @@ public class MainActivity extends AppCompatActivity {
         nums.add(6);
         nums.add(7);
         nums.add(8);
-
-
         Collections.shuffle(nums);
+
 
         n1 = nums.get(0);
         n2 = nums.get(1);
@@ -93,8 +93,10 @@ public class MainActivity extends AppCompatActivity {
         n8 = nums.get(7);
         n9 = nums.get(8);
 
-    new CountDownTimer(3000,1000){
 
+
+    //Show Photos Timer
+    new CountDownTimer(3000,1000){
     public void onTick(long millisUntilFinished) {
         bt1.setBackgroundResource(pics[n1]);
         bt2.setBackgroundResource(pics[n2]);
@@ -107,23 +109,23 @@ public class MainActivity extends AppCompatActivity {
         bt9.setBackgroundResource(pics[n9]);
     }
     public void onFinish() {
-        bt1.setBackgroundResource(R.drawable.close);
-        bt2.setBackgroundResource(R.drawable.close);
-        bt3.setBackgroundResource(R.drawable.close);
-        bt4.setBackgroundResource(R.drawable.close);
-        bt5.setBackgroundResource(R.drawable.close);
-        bt6.setBackgroundResource(R.drawable.close);
-        bt7.setBackgroundResource(R.drawable.close);
-        bt8.setBackgroundResource(R.drawable.close);
-        bt9.setBackgroundResource(R.drawable.close);
-
-
+        bt1.setBackgroundResource(CLOSEIMG);
+        bt2.setBackgroundResource(CLOSEIMG);
+        bt3.setBackgroundResource(CLOSEIMG);
+        bt4.setBackgroundResource(CLOSEIMG);
+        bt5.setBackgroundResource(CLOSEIMG);
+        bt6.setBackgroundResource(CLOSEIMG);
+        bt7.setBackgroundResource(CLOSEIMG);
+        bt8.setBackgroundResource(CLOSEIMG);
+        bt9.setBackgroundResource(CLOSEIMG);
     }
-
-
 
    }.start();
 
+
+
+
+        //Game Timer
 
         new CountDownTimer(100000,1000){
 
@@ -133,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
             public void onFinish() {
-
+                //AlertDialog for Close or Open new Game
              new AlertDialog.Builder(MainActivity.this)
                      .setTitle("Game over")
                      .setMessage("Time Out")
@@ -141,8 +143,8 @@ public class MainActivity extends AppCompatActivity {
                          @Override
                          public void onClick(DialogInterface dialog, int which) {
                              score=0;
-
                              finish();
+                             getIntent().setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                              startActivity(getIntent());
 
                          }
@@ -157,16 +159,13 @@ public class MainActivity extends AppCompatActivity {
 
 
             }
-
-
-
         }.start();
 
 
-
+//Image 1
 
         bt1 = (ImageView) findViewById(R.id.b1);
-        bt1.setBackgroundResource(R.drawable.close);
+        bt1.setBackgroundResource(CLOSEIMG);
         bt1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -182,22 +181,12 @@ public class MainActivity extends AppCompatActivity {
                     }
                     public void onFinish() {
                         bt1.setBackgroundResource(R.drawable.close);
-                        bt2.setBackgroundResource(R.drawable.close);
-                        bt3.setBackgroundResource(R.drawable.close);
-                        bt4.setBackgroundResource(R.drawable.close);
-                        bt5.setBackgroundResource(R.drawable.close);
-                        bt6.setBackgroundResource(R.drawable.close);
-                        bt7.setBackgroundResource(R.drawable.close);
-                        bt8.setBackgroundResource(R.drawable.close);
-                        bt9.setBackgroundResource(R.drawable.close);
-
 
                     }
 
 
 
                 }.start();
-
 
                 if(score==4){
 
@@ -225,6 +214,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+//Image 2
 
         bt2 = (ImageView) findViewById(R.id.b2);
         bt2.setBackgroundResource(R.drawable.close);
@@ -245,15 +235,9 @@ public class MainActivity extends AppCompatActivity {
 
                     }
                     public void onFinish() {
-                        bt1.setBackgroundResource(R.drawable.close);
+
                         bt2.setBackgroundResource(R.drawable.close);
-                        bt3.setBackgroundResource(R.drawable.close);
-                        bt4.setBackgroundResource(R.drawable.close);
-                        bt5.setBackgroundResource(R.drawable.close);
-                        bt6.setBackgroundResource(R.drawable.close);
-                        bt7.setBackgroundResource(R.drawable.close);
-                        bt8.setBackgroundResource(R.drawable.close);
-                        bt9.setBackgroundResource(R.drawable.close);
+
 
 
                     }
@@ -277,7 +261,7 @@ public class MainActivity extends AppCompatActivity {
                             .setNegativeButton("Exit Game", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
-                                    finish();
+                              android.os.Process.killProcess(android.os.Process.myPid());
                                 }
                             }).show();
                 }
@@ -287,6 +271,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+//Image 3
 
         bt3 = (ImageView) findViewById(R.id.b3);
         bt3.setBackgroundResource(R.drawable.close);
@@ -309,15 +294,8 @@ public class MainActivity extends AppCompatActivity {
 
                     }
                     public void onFinish() {
-                        bt1.setBackgroundResource(R.drawable.close);
-                        bt2.setBackgroundResource(R.drawable.close);
+
                         bt3.setBackgroundResource(R.drawable.close);
-                        bt4.setBackgroundResource(R.drawable.close);
-                        bt5.setBackgroundResource(R.drawable.close);
-                        bt6.setBackgroundResource(R.drawable.close);
-                        bt7.setBackgroundResource(R.drawable.close);
-                        bt8.setBackgroundResource(R.drawable.close);
-                        bt9.setBackgroundResource(R.drawable.close);
 
 
                     }
@@ -348,6 +326,8 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+//Image 4
 
         bt4 = (ImageView) findViewById(R.id.b4);
         bt4.setBackgroundResource(R.drawable.close);
@@ -368,15 +348,9 @@ public class MainActivity extends AppCompatActivity {
 
                     }
                     public void onFinish() {
-                        bt1.setBackgroundResource(R.drawable.close);
-                        bt2.setBackgroundResource(R.drawable.close);
-                        bt3.setBackgroundResource(R.drawable.close);
+
                         bt4.setBackgroundResource(R.drawable.close);
-                        bt5.setBackgroundResource(R.drawable.close);
-                        bt6.setBackgroundResource(R.drawable.close);
-                        bt7.setBackgroundResource(R.drawable.close);
-                        bt8.setBackgroundResource(R.drawable.close);
-                        bt9.setBackgroundResource(R.drawable.close);
+
 
 
                     }
@@ -408,6 +382,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+//Image 5
 
         bt5 = (ImageView) findViewById(R.id.b5);
         bt5.setBackgroundResource(R.drawable.close);
@@ -428,15 +403,8 @@ public class MainActivity extends AppCompatActivity {
 
                     }
                     public void onFinish() {
-                        bt1.setBackgroundResource(R.drawable.close);
-                        bt2.setBackgroundResource(R.drawable.close);
-                        bt3.setBackgroundResource(R.drawable.close);
-                        bt4.setBackgroundResource(R.drawable.close);
+
                         bt5.setBackgroundResource(R.drawable.close);
-                        bt6.setBackgroundResource(R.drawable.close);
-                        bt7.setBackgroundResource(R.drawable.close);
-                        bt8.setBackgroundResource(R.drawable.close);
-                        bt9.setBackgroundResource(R.drawable.close);
 
 
                     }
@@ -467,6 +435,8 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+//image 6
 
         bt6 = (ImageView) findViewById(R.id.b6);
         bt6.setBackgroundResource(R.drawable.close);
@@ -487,15 +457,8 @@ public class MainActivity extends AppCompatActivity {
 
                     }
                     public void onFinish() {
-                        bt1.setBackgroundResource(R.drawable.close);
-                        bt2.setBackgroundResource(R.drawable.close);
-                        bt3.setBackgroundResource(R.drawable.close);
-                        bt4.setBackgroundResource(R.drawable.close);
-                        bt5.setBackgroundResource(R.drawable.close);
+
                         bt6.setBackgroundResource(R.drawable.close);
-                        bt7.setBackgroundResource(R.drawable.close);
-                        bt8.setBackgroundResource(R.drawable.close);
-                        bt9.setBackgroundResource(R.drawable.close);
 
 
                     }
@@ -527,6 +490,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+//Image 7
 
         bt7 = (ImageView) findViewById(R.id.b7);
         bt7.setBackgroundResource(R.drawable.close);
@@ -546,15 +510,9 @@ public class MainActivity extends AppCompatActivity {
 
                     }
                     public void onFinish() {
-                        bt1.setBackgroundResource(R.drawable.close);
-                        bt2.setBackgroundResource(R.drawable.close);
-                        bt3.setBackgroundResource(R.drawable.close);
-                        bt4.setBackgroundResource(R.drawable.close);
-                        bt5.setBackgroundResource(R.drawable.close);
-                        bt6.setBackgroundResource(R.drawable.close);
+
                         bt7.setBackgroundResource(R.drawable.close);
-                        bt8.setBackgroundResource(R.drawable.close);
-                        bt9.setBackgroundResource(R.drawable.close);
+
 
 
                     }
@@ -584,6 +542,8 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+//Image 8
 
         bt8 = (ImageView) findViewById(R.id.b8);
         bt8.setBackgroundResource(R.drawable.close);
@@ -603,15 +563,9 @@ public class MainActivity extends AppCompatActivity {
 
                     }
                     public void onFinish() {
-                        bt1.setBackgroundResource(R.drawable.close);
-                        bt2.setBackgroundResource(R.drawable.close);
-                        bt3.setBackgroundResource(R.drawable.close);
-                        bt4.setBackgroundResource(R.drawable.close);
-                        bt5.setBackgroundResource(R.drawable.close);
-                        bt6.setBackgroundResource(R.drawable.close);
-                        bt7.setBackgroundResource(R.drawable.close);
+
                         bt8.setBackgroundResource(R.drawable.close);
-                        bt9.setBackgroundResource(R.drawable.close);
+
 
 
                     }
@@ -644,6 +598,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+//Image 9
 
         bt9 = (ImageView) findViewById(R.id.b9);
         bt9.setBackgroundResource(R.drawable.close);
@@ -664,14 +619,7 @@ public class MainActivity extends AppCompatActivity {
 
                     }
                     public void onFinish() {
-                        bt1.setBackgroundResource(R.drawable.close);
-                        bt2.setBackgroundResource(R.drawable.close);
-                        bt3.setBackgroundResource(R.drawable.close);
-                        bt4.setBackgroundResource(R.drawable.close);
-                        bt5.setBackgroundResource(R.drawable.close);
-                        bt6.setBackgroundResource(R.drawable.close);
-                        bt7.setBackgroundResource(R.drawable.close);
-                        bt8.setBackgroundResource(R.drawable.close);
+
                         bt9.setBackgroundResource(R.drawable.close);
 
 
@@ -716,19 +664,30 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+   // Compare Photos
 
     public Boolean compare(ImageView v1, ImageView v2) {
 
         if(v1.getBackground().getConstantState()==v2.getBackground().getConstantState())
-            return true;
-        else
-            return false;
+        {
 
+            v1.setBackgroundResource(R.drawable.good);
+            v2.setBackgroundResource(R.drawable.good);
+            return true;
+        }
+        else
+          return false;
 
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
 
+        // Remove the activity when its off the screen
 
+        android.os.Process.killProcess(android.os.Process.myPid());
+    }
 
 }
 
